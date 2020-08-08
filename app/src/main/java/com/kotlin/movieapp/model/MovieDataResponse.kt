@@ -1,8 +1,10 @@
 package com.kotlin.movieapp.model
 
+import com.google.gson.annotations.SerializedName
+
 data class MovieDataResponse(
-    val page: Long? = null,
-    val totalResults: Long? = null,
-    val totalPages: Long? = null,
-    val results: List<MovieData>? = null
+    @SerializedName("page") val page : Int,
+    @SerializedName("total_results") val total_results : Int,
+    @SerializedName("total_pages") val total_pages : Int,
+    @SerializedName("results") val results : List<MovieData>
 )

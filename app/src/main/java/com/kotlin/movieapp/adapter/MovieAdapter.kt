@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.movieapp.R
 import com.kotlin.movieapp.model.MovieData
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movies_list_item.view.*
 
 class MovieAdapter(private var moviesList: List<MovieData>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
@@ -22,8 +23,12 @@ class MovieAdapter(private var moviesList: List<MovieData>) : RecyclerView.Adapt
 
     //Verileri göstermek için
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val datad = moviesList[position]
-        holder.itemView.data_movie_name.text = datad.name
+        val movie = moviesList[position]
+        holder.itemView.data_movie_name.text = movie.original_title
+        holder.itemView.data_movie_rate.text = movie.vote_average.toString()
+
+        Picasso.get().load("https://image.tmdb.org/t/p/w220_and_h330_face"+ movie.poster_path).into(holder.itemView.data_movie_poster)
+
     }
 
 

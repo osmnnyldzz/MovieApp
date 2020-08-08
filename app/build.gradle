@@ -34,9 +34,13 @@ dependencies {
     //Retrofit & Gson Library
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.code.gson:gson:2.8.5'
-
+    //CardView
+    implementation "androidx.cardview:cardview:1.0.0"
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

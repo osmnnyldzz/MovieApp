@@ -12,6 +12,6 @@ import retrofit2.http.Query
 * */
 
 interface MovieService {
-    @GET("tv/popular")    //Base url'den sonra gelecek adresi yazdık. Sonra değişiklik gösterebilecek alanlar için Query kullandık.
+    @GET("movie/top_rated")    //Base url'den sonra gelecek adresi yazdık. Sonra değişiklik gösterebilecek alanlar için Query kullandık.
     fun getMovieData(@Query("api_key") apiKey:String,@Query("language") language:String, @Query("page") page:Int): Call<MovieDataResponse>
 }
