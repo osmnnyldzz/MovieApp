@@ -1,15 +1,14 @@
-package com.kotlin.movieapp
+package com.kotlin.movieapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.kotlin.movieapp.R
 import com.kotlin.movieapp.adapter.MovieAdapter
 import com.kotlin.movieapp.api.MovieService
 import com.kotlin.movieapp.api.RetrofitClient
-import com.kotlin.movieapp.model.MovieData
 import com.kotlin.movieapp.model.MovieDataResponse
 import kotlinx.android.synthetic.main.activity_movie.*
 import retrofit2.Call
@@ -23,9 +22,13 @@ class MovieActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie)
 
         recyclerView.layoutManager=GridLayoutManager(this,2)
+        retrofitClient()
 
-        RetrofitClient.getClient().create(MovieService::class.java)  // Interface'imiz ile burada retrofit nesnesi oluşturduk.
-            .getMovieData(API_KEY,"tr-TR",1).enqueue(object :retrofit2.Callback<MovieDataResponse>{
+    }
+    private fun retrofitClient() {
+        // Interface'imiz ile burada retrofit nesnesi oluşturduk.
+        RetrofitClient.getClient().create(MovieService::class.java)
+            .getMovieData(API_KEY,"en-US",1).enqueue(object :retrofit2.Callback<MovieDataResponse>{
 
                 override fun onFailure(call: Call<MovieDataResponse>, t: Throwable) {
                     Toast.makeText(this@MovieActivity, "Failure", Toast.LENGTH_LONG).show()
