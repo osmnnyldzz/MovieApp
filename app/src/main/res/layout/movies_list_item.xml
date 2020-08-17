@@ -1,70 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardViewId"
-    android:layout_width="190dp"
+    android:id="@+id/frameLayoutId"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:clickable="true"
-    android:focusable="true"
-    app:cardBackgroundColor="@android:color/black"
-    app:cardCornerRadius="4dp">
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_margin_half"
+        android:background="@android:color/black"
+        app:cardPreventCornerOverlap="false">
+
+        <ImageView
+            android:id="@+id/data_movie_poster"
+            android:layout_width="@dimen/poster_thumb_width"
+            android:layout_height="@dimen/poster_thumb_height"
+            android:padding="5dp" />
+
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/poster_thumb_width"
+        android:paddingLeft="@dimen/poster_thumb_width"
+        android:paddingTop="@dimen/activity_margin_half"
+        android:paddingEnd="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin">
 
-        <ImageView
-            android:id="@+id/data_movie_poster"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/data_movie_year"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin_content"
+            android:layout_marginLeft="@dimen/activity_margin_content"
+            android:alpha="0.38"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textStyle="bold"
+            tools:text="Movie Year " />
 
         <TextView
             android:id="@+id/data_movie_name"
-            android:layout_width="wrap_content"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Movie Name"
-            android:textColor="@android:color/holo_orange_light" />
+            android:layout_marginStart="@dimen/activity_margin_content"
+            android:layout_marginLeft="@dimen/activity_margin_content"
+            android:layout_marginTop="@dimen/activity_margin_quarter"
+            android:maxLines="1"
+            tools:text="Movie Title" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin_content"
+            android:layout_marginLeft="@dimen/activity_margin_content"
+            android:layout_marginTop="@dimen/activity_margin_half">
+
             <TextView
                 android:id="@+id/data_movie_rate_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Rating: "
-                android:textColor="@android:color/holo_orange_light" />
+                android:layout_marginTop="@dimen/activity_margin_half"
+                android:text="Rating: " />
+
             <TextView
                 android:id="@+id/data_movie_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Movie Rate"
-                android:textColor="@android:color/holo_orange_light" />
+                android:layout_marginTop="@dimen/activity_margin_half"
+                android:text="Movie Rate" />
 
         </LinearLayout>
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+
+</FrameLayout>
