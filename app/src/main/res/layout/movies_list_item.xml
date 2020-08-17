@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_margin_content"
             android:layout_marginLeft="@dimen/activity_margin_content"
-            android:alpha="0.38"
+            android:alpha="0.78"
             android:gravity="end"
             android:maxLines="1"
             android:textStyle="bold"

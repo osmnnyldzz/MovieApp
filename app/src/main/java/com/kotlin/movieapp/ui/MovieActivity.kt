@@ -1,9 +1,7 @@
 package com.kotlin.movieapp.ui
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -25,15 +23,15 @@ const val API_KEY = "a127bbfea38f370fbbd9081a8d1e73fe"
 class MovieActivity : AppCompatActivity() {
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    lateinit var recyclerView : RecyclerView
+    private lateinit var recyclerView : RecyclerView
     lateinit var progressBar: ProgressBar
-    var list: MutableList<MovieData> = mutableListOf()
-    lateinit var adapter: MovieAdapter
-    var visibleItemCount: Int = 0
-    var pastVisibleItemCount: Int = 0
+    private var list: MutableList<MovieData> = mutableListOf()
+    private lateinit var adapter: MovieAdapter
+    var visibleItemCount = 0
+    var pastVisibleItemCount = 0
     var totalItemCount = 0
-    var loading:Boolean = false
-    private var page:Int = 1
+    var loading = false
+    var page = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +39,7 @@ class MovieActivity : AppCompatActivity() {
 
         progressBar = findViewById(R.id.progress_circular)
         recyclerView = findViewById(R.id.recyclerView)
+
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
@@ -82,15 +81,14 @@ class MovieActivity : AppCompatActivity() {
             recyclerView.adapter = adapter
         }
         else{
-            var currrentPosition = (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+            val currentPosition = (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
             list.addAll(results)
             adapter.notifyDataSetChanged()
-            recyclerView.scrollToPosition(currrentPosition)
+            recyclerView.scrollToPosition(currentPosition)
         }
+
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-
                 if (dy>0){
                     visibleItemCount = layoutManager.childCount
                     totalItemCount = layoutManager.itemCount
@@ -103,7 +101,6 @@ class MovieActivity : AppCompatActivity() {
                         }
                     }
                 }
-
                 super.onScrolled(recyclerView, dx, dy)
             }
 

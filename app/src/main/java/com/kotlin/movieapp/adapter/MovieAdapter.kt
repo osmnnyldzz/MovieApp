@@ -19,7 +19,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>{
 
     lateinit var context: Context
     lateinit var rv : View
-    lateinit var list: List<MovieData>
+    private var list: List<MovieData>
 
     constructor(list: List<MovieData>) : super() {
         this.list = list
